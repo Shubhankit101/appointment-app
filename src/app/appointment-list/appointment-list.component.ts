@@ -1,39 +1,19 @@
 import { Component } from '@angular/core';
 import { AppComponent } from '../app.component';
+import { Appointment } from '../models/appointment';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-appointment-list',
-  imports: [],
+  standalone: true,                 //making this component standalone
+  imports: [FormsModule],           //importing FormModule for ngModel
   templateUrl: './appointment-list.component.html',
-  styleUrl: './appointment-list.component.css',
+  styleUrl: './appointment-list.component.css'
 })
+
 export class AppointmentListComponent {
+  newAppointmentTitle: string = '';
+  newAppointmentDate: Date = new Date();
 
-  /*
-  //Functions 
-  private log(text: string): void {}
-
-  sum(a: number, b: number) {
-    return a + b;
-  }
-
-  f() {
-    this.log('a')
-    this.log('b')
-  }
-
-  // Primitive Types
-  x: number = 1;
-  y: string = "";
-  z: boolean = true;
-
-  //Object
-  app: AppComponent = new AppComponent();
-
-  //Array Type
-  ax: number[] = [0,0];
-  by: string[] = ["", ""];
-  cz: boolean[] = [true, false];
-
-  */
+  appointments: Appointment[] = [];
 }
