@@ -1,20 +1,26 @@
 import { Component } from '@angular/core';
-import { AppComponent } from '../app.component';
 import { Appointment } from '../models/appointment';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-appointment-list',
   standalone: true, //making this component standalone
-  imports: [FormsModule], //importing FormModule for ngModel
+  imports: [FormsModule, CommonModule], //importing FormModule for ngModel
   templateUrl: './appointment-list.component.html',
   styleUrl: './appointment-list.component.css',
 })
-export class AppointmentListComponent {
+export class AppointmentListComponent implements OnInit {
   newAppointmentTitle: string = '';
   newAppointmentDate: Date = new Date();
 
   appointments: Appointment[] = [];
+
+  ngOnInit(): void {
+    let savedAppointments = localStorage.getItem('appointments');
+    this.appointments = savedAppointments ? JSON.parse(savedAppointments) : [];
+  }
 
   addAppointment() {
     if (this.newAppointmentTitle.trim().length && this.newAppointmentDate) {
@@ -28,11 +34,16 @@ export class AppointmentListComponent {
       this.appointments.push(newAppointment);
 
       // Clearing out the data from the placeholder after is has been added.
-      this.newAppointmentTitle = "";
+      this.newAppointmentTitle = '';
       this.newAppointmentDate = new Date();
 
-      alert(this.appointments.length);
+      //Save the data in local Storage
+      localStorage.setItem('appointments', JSON.stringify(this.appointments));
     }
-    
+  }
+  // Deletes the object with the index from the appointment list, which will automatically reflect in our html.
+  deleteAppointment(index: number) {
+    this.appointments.splice(index, 1);
+    localStorage.setItem('appointments', JSON.stringify(this.appointments));
   }
 }
