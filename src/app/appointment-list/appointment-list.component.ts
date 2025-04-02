@@ -33,11 +33,11 @@ export class AppointmentListComponent {
       this.newAppointmentTitle = "";
       this.newAppointmentDate = new Date();
 
-      alert(this.appointments.length);
     }
     
   }
-
+  // Deletes the object with the index from the appointment list, which will automatically reflect in our html.
   deleteAppointment(index: number){
     this.appointments.splice(index,1);
+  }
 }
