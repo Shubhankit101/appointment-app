@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { AppComponent } from '../app.component';
 import { Appointment } from '../models/appointment';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-appointment-list',
   standalone: true, //making this component standalone
-  imports: [FormsModule], //importing FormModule for ngModel
+  imports: [FormsModule, CommonModule], //importing FormModule for ngModel
   templateUrl: './appointment-list.component.html',
   styleUrl: './appointment-list.component.css',
 })
@@ -35,4 +37,7 @@ export class AppointmentListComponent {
     }
     
   }
+
+  deleteAppointment(index: number){
+    this.appointments.splice(index,1);
 }
