@@ -1,1 +1,24 @@
 @import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --item-bg: #f8f9fa;
+  }
+  
+  .dark-theme {
+    --bg-color: #1e1e1e;
+    --text-color: #ffffff;
+    --item-bg: #333;
+  }
+  
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+  }
+  
+  .list-group-item {
+    background-color: var(--item-bg);
+    color: var(--text-color);
+  }

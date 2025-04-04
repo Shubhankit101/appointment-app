@@ -13,10 +13,14 @@
         <div class="col-md-4">
             <input class="form-control" [(ngModel)]="newAppointmentDate" placeholder="Appointment Date" type="date"/>
         </div>
-        <div class="col-md-2">
-            <button class="btn btn-primary w-100" (click)="addAppointment()">Add</button>
+        <div class="col-auto d-flex align-items-center">
+            <button class="btn btn-primary" (click)="addAppointment()">Add</button>
+            <button class="btn btn-secondary ms-3" (click)="toggleTheme()">🌓 Theme</button>
         </div>
+       
     </div>
+
+    
     <h2 class=" text-center mt-5">Appointments</h2>
     <ul class="list-group mt-3">
         <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let appointment of appointments; index as i">

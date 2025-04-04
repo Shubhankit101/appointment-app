@@ -20,6 +20,15 @@ export class AppointmentListComponent implements OnInit {
   ngOnInit(): void {
     let savedAppointments = localStorage.getItem('appointments');
     this.appointments = savedAppointments ? JSON.parse(savedAppointments) : [];
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.body.classList.add(savedTheme);
+    }
+  }
+
+  toggleTheme():void{
+      const isDark = document.body.classList.toggle('dark-theme');
+      localStorage.setItem('theme', isDark ? 'dark-theme' : '');
   }
 
   addAppointment() {
