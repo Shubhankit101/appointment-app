@@ -1,0 +1,28 @@
+.appointment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px; /* Space between title and date */
+    flex-wrap: wrap; /* Ensures responsiveness */
+  }
+  
+  .title {
+    flex: 1; /* Allows title to take available space */
+    min-width: 150px; /* Prevents shrinking too much */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Shows "..." if text is too long */
+  }
+  
+  .date {
+    margin-right: 5%;
+    white-space: nowrap; /* Ensures date stays fixed */
+  }
+  
+  /* 📱 Mobile responsiveness */
+  @media (max-width: 600px) {
+    .appointment-item {
+      flex-direction: column; /* Stacks title and date on smaller screens */
+      align-items: flex-start;
+    }
+  }
